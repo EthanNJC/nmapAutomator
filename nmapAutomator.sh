@@ -504,7 +504,7 @@ else
 	usage
 fi
 
-if [[ "$2" =~ ^(Quick|Basic|UDP|Full|Vulns|Recon|All)$ ]]; then
+if [[ "$2" =~ ^(quick|basic|udp|full|vulns|recon|all)$ ]]; then
 	if [[ ! -d $1 ]]; then
 	        mkdir $1
 	fi
@@ -520,17 +520,17 @@ if [[ "$2" =~ ^(Quick|Basic|UDP|Full|Vulns|Recon|All)$ ]]; then
 	header $1 $2
 	
 	case "$2" in
-		Quick) 	quickScan $1;;
-		Basic)	if [ ! -f nmap/Quick_$1.nmap ]; then quickScan $1; fi
+		quick) 	quickScan $1;;
+		basic)	if [ ! -f nmap/Quick_$1.nmap ]; then quickScan $1; fi
 			basicScan $1;;
-		UDP) 	UDPScan $1;;
-		Full) 	fullScan $1;;
-		Vulns) 	if [ ! -f nmap/Quick_$1.nmap ]; then quickScan $1; fi
+		udp) 	UDPScan $1;;
+		full) 	fullScan $1;;
+		vulns) 	if [ ! -f nmap/Quick_$1.nmap ]; then quickScan $1; fi
 			vulnsScan $1;;
-		Recon) 	if [ ! -f nmap/Quick_$1.nmap ]; then quickScan $1; fi
+		recon) 	if [ ! -f nmap/Quick_$1.nmap ]; then quickScan $1; fi
 			if [ ! -f nmap/Basic_$1.nmap ]; then basicScan $1; fi
 			recon $1;;
-		All)	quickScan $1
+		all)	quickScan $1
 			basicScan $1
 			UDPScan $1
 			fullScan $1
